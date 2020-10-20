@@ -9,57 +9,33 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$soundNum.wav');
   }
 
+  Expanded soundItem({Color color, int soundNum}) {
+    return Expanded(
+      child: FlatButton(
+        onPressed: () {
+          playSound(soundNum);
+        },
+        color: color,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
-          child: Column(
-            children: [
-              FlatButton(
-                onPressed: () {
-                  playSound(1);
-                },
-                color: Colors.blue,
-              ),
-              FlatButton(
-                onPressed: () {
-                  playSound(2);
-                },
-                color: Colors.red,
-              ),
-              FlatButton(
-                onPressed: () {
-                  playSound(3);
-                },
-                color: Colors.teal,
-              ),
-              FlatButton(
-                onPressed: () {
-                  playSound(4);
-                },
-                color: Colors.purple,
-              ),
-              FlatButton(
-                onPressed: () {
-                  playSound(5);
-                },
-                color: Colors.orange,
-              ),
-              FlatButton(
-                onPressed: () {
-                  playSound(6);
-                },
-                color: Colors.yellow,
-              ),
-              FlatButton(
-                onPressed: () {
-                  playSound(7);
-                },
-                color: Colors.green,
-              ),
-            ],
-          ),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            soundItem(color: Colors.red, soundNum: 1),
+            soundItem(color: Colors.yellow, soundNum: 2),
+            soundItem(color: Colors.teal, soundNum: 3),
+            soundItem(color: Colors.green, soundNum: 4),
+            soundItem(color: Colors.blue, soundNum: 5),
+            soundItem(color: Colors.orange, soundNum: 6),
+            soundItem(color: Colors.indigo, soundNum: 7),
+          ]),
         ),
       ),
     );
